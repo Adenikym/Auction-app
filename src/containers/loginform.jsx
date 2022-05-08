@@ -3,7 +3,7 @@ import FormInput from '../components/FormInput';
 import Button from '../components/Formbutton';
 function Loginform() {
   return (
-    <div className=" bg-c-black  py-4 border  border-c-blue border-4 shadow-md w-1/3 my-auto px-9">
+    <div className="bg-c-black  py-4 border-c-blue border-4 shadow-md w-1/3 my-auto px-9">
       <p style={{ color: '#fff' }} className="mt-5 mb-5 text-white text-center">
         Welcome back !
       </p>

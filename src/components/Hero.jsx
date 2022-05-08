@@ -27,7 +27,7 @@ import woman from '../assets/img/women-with-vr.png';
 //    }
 // `;
 
-const Hero = ({create}) => (
+const Hero = ({ create }) => (
   <div className="text-c-white h-3/4 pt-32 max-w-5xl mx-auto grid grid-cols-2 gap-2 pb-24">
     <div>
       <h3 className="text-2xl text-c-blue font-bold mb-2">ReachCoin</h3>
@@ -44,7 +44,10 @@ const Hero = ({create}) => (
       <button className="text-c-black bg-c-blue hover:bg-opacity-70 font-bold py-2 px-10 rounded-full w-max">
         Explore
       </button>
-      <button onClick={create} className="text-c-black bg-c-blue hover:bg-opacity-70 font-bold py-2 px-10 rounded-full w-max ml-4">
+      <button
+        onClick={create}
+        className="text-c-black bg-c-blue hover:bg-opacity-70 font-bold py-2 px-10 rounded-full w-max ml-4"
+      >
         Upload Auction
       </button>
     </div>

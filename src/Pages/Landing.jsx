@@ -98,7 +98,7 @@ const Landing = () => {
         }}
       />
       <Hero create={showUpload} />
-      <>{upload == false ? '' : <CreateAuction closemodal={showUpload} />}</>
+      <>{upload === false ? '' : <CreateAuction closemodal={showUpload} />}</>
     </div>
   );
 };

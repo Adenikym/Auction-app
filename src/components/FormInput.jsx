@@ -67,7 +67,7 @@ const Input = styled.input`
   border: 2px solid #000000;
   border-radius: 5px;
   margin-right: 15px;
-  margin-top:20px;
+  margin-top: 20px;
 
   @media (min-width: 1024px) {
     max-width: 400px;

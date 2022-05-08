@@ -1,10 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
-import Signup from './Pages/signup';
-import Login from './Pages/Login';
-import Wallet from './Pages/Wallet';
+import Signup from './pages/signup';
+import Login from './pages/Login';
+import Wallet from './pages/Wallet';
 
 import './App.css';
-import Landing from './Pages/Landing';
+import Landing from './pages/Landing';
 
 function App() {
   return (

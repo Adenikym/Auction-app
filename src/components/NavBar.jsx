@@ -84,18 +84,18 @@ function NavBar() {
             <ul className="flex flex-grow justify-end flex-wrap items-center md:hidden">
               <li>
                 <Link
-                  to="/signin"
+                  to="/login"
                   className="bg-transparent font-medium text-c-blue hover:text-c-black hover:bg-c-blue border border-c-blue rounded-lg hover:border-transparent px-5 py-3 flex items-center transition duration-150 ease-in-out"
                 >
-                  Sign in
+                  Get started
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/signup"
+                  to="/wallet"
                   className="btn-sm text-c-black bg-c-blue hover:bg-opacity-70 ml-3 px-5 py-3 flex items-center rounded-lg transition duration-150 ease-in-out"
                 >
-                  <span>Sign up</span>
+                  <span>Connect Wallet</span>
                   <svg
                     className="w-3 h-3 fill-current text-c-black flex-shrink-0 ml-2 -mr-1"
                     viewBox="0 0 12 12"

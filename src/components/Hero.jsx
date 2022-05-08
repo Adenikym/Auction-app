@@ -27,7 +27,7 @@ import woman from '../assets/img/women-with-vr.png';
 //    }
 // `;
 
-const Hero = () => (
+const Hero = ({ create }) => (
   <div className="text-c-white h-3/4 pt-32 max-w-5xl mx-auto grid grid-cols-2 gap-2 pb-24">
     <div>
       <h3 className="text-2xl text-c-blue font-bold mb-2">ReachCoin</h3>
@@ -42,7 +42,13 @@ const Hero = () => (
         certifies a digital asset to be unique and therefore not interchangeable
       </p>
       <button className="text-c-black bg-c-blue hover:bg-opacity-70 font-bold py-2 px-10 rounded-full w-max">
-        Create
+        Explore
+      </button>
+      <button
+        onClick={create}
+        className="text-c-black bg-c-blue hover:bg-opacity-70 font-bold py-2 px-10 rounded-full w-max ml-4"
+      >
+        Upload Auction
       </button>
     </div>
     <img src={woman} alt="Women with VR" />

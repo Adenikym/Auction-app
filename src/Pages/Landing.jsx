@@ -39,6 +39,12 @@ const Landing = () => {
               resize: true,
             },
             modes: {
+              bubble: {
+                distance: 400,
+                duration: 2,
+                opacity: 0.8,
+                size: 40,
+              },
               push: {
                 quantity: 4,
               },
@@ -86,6 +92,7 @@ const Landing = () => {
               type: 'circle',
             },
             size: {
+              random: true,
               value: { min: 1, max: 5 },
             },
           },

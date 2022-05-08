@@ -42,7 +42,7 @@ const Hero = () => (
         certifies a digital asset to be unique and therefore not interchangeable
       </p>
       <button className="text-c-black bg-c-blue hover:bg-opacity-70 font-bold py-2 px-10 rounded-full w-max">
-        Button
+        Create
       </button>
     </div>
     <img src={woman} alt="Women with VR" />

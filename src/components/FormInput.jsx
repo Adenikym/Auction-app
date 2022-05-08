@@ -36,18 +36,23 @@ const InputField = props => {
     );
   } else {
     return (
-        <div className="flex-col">
-        <label className="inputField__label text-white justify-start " > {props.label}</label>
-      <Input
-       
-        onChange={e => props.onChangeHandler(e.target.value)}
-        type={props.type}
-        placeholder={props.placeholder}
-        value={props.value}
-        required={props.isRequired}
-        className="inputField__field"
-        name={props.name}
-      />
+      <div className="flex-col">
+        <label
+          style={{ color: '#fff', fontSize: 16 }}
+          className="inputField__label text-white justify-start "
+        >
+          {' '}
+          {props.label}
+        </label>
+        <Input
+          onChange={e => props.onChangeHandler(e.target.value)}
+          type={props.type}
+          placeholder={props.placeholder}
+          value={props.value}
+          required={props.isRequired}
+          className="inputField__field"
+          name={props.name}
+        />
       </div>
     );
   }
@@ -60,8 +65,9 @@ const Input = styled.input`
   padding: 8px 0 8px 36.67px;
   font-size: 17px;
   border: 2px solid #000000;
-  border-radius: 8px;
+  border-radius: 5px;
   margin-right: 15px;
+  margin-top:20px;
 
   @media (min-width: 1024px) {
     max-width: 400px;

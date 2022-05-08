@@ -4,25 +4,35 @@ import Button from '../components/Formbutton';
 
 function Form() {
   return (
-    <div className="  py-4 border border-white shadow h-3/4 w-1/3 my-auto ">
-      <p className="mt-5 mb-5 text-white">Get started with auctions!</p>
+    <div className=" bg-c-black  py-4  border-4 border-c-blue shadow w-1/3 my-auto px-9">
+      <p style={{ color: '#fff' }} className="mt-5 mb-5 text-white text-center">
+        Get started with auctions!
+      </p>
       <FormInput
         className="mt-4"
         placeholder="enter your full name"
-        label="Email"
+        label="Fullname"
       />
-      
+
       <FormInput
         className="mt-4"
         placeholder="enter your email address"
         label="Email"
       />
-      
-      <FormInput />
-     
-      <FormInput />
-      <br />
-      <Button />
+
+      <FormInput
+        className="mt-4"
+        placeholder="enter your password"
+        label="Password"
+      />
+
+      <FormInput
+        className="mt-4"
+        placeholder="enter your email address"
+        label="Confirm Password"
+      />
+
+      <Button buttonTitle={'Create Account'} />
     </div>
   );
 }

@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
 import Hero from '../components/Hero';
 import NavBar from '../components/NavBar';
+import CreateAuction from '../containers/CreateAuction';
 
 const Landing = () => {
+  const [upload, setUpload] = useState(false);
+  const showUpload = () => {
+    setUpload(!upload);
+  };
   const particlesInit = async main => {
     console.log(main);
 
@@ -92,7 +97,8 @@ const Landing = () => {
           detectRetina: true,
         }}
       />
-      <Hero />
+      <Hero create={showUpload} />
+      <>{upload == false ? '' : <CreateAuction closemodal={showUpload} />}</>
     </div>
   );
 };

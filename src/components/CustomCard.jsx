@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
 const CustomCard = () => {
   return (
@@ -42,10 +42,10 @@ const CustomCard = () => {
 
 export default CustomCard;
 
-const CardWrap = styled.div`
-  background: #2a2d3a;
-  border-radius: 20px;
-  margin-bottom: 20px;
-  margin-inline: 10px;
-  padding: 11px 12px 19px 11px;
-`;
+// const CardWrap = styled.div`
+//   background: #2a2d3a;
+//   border-radius: 20px;
+//   margin-bottom: 20px;
+//   margin-inline: 10px;
+//   padding: 11px 12px 19px 11px;
+// `;

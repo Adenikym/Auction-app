@@ -5,7 +5,7 @@ const CustomCard = () => {
   return (
     <div class="w-72 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 h-min mr-9">
       <a href="/auction">
-        <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
+        <img class="rounded-t-lg" src="https://picsum.photos/200/300" alt="" />
       </a>
       <div class="p-5">
         <a href="/auction">

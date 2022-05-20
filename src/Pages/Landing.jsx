@@ -4,12 +4,17 @@ import { loadFull } from 'tsparticles';
 import Hero from '../components/Hero';
 import NavBar from '../components/NavBar';
 import CreateAuction from '../containers/CreateAuction';
+import ConnectWallet from '../containers/ConnectWallet';
 
 const Landing = () => {
   const [upload, setUpload] = useState(false);
+  const [connect, setConnect]= useState(false)
   const showUpload = () => {
     setUpload(!upload);
   };
+  const showConnect= () =>{
+    setConnect(!connect)
+  }
   const particlesInit = async main => {
     console.log(main);
 
@@ -24,7 +29,7 @@ const Landing = () => {
   };
   return (
     <div className="bg-hero-pattern h-fit">
-      <NavBar />
+      <NavBar connect={showConnect} />
       <Particles
         id="tsparticles"
         init={particlesInit}
@@ -104,8 +109,9 @@ const Landing = () => {
           detectRetina: true,
         }}
       />
-      <Hero create={showUpload} />
+      <Hero create={showUpload}  />
       <>{upload === false ? '' : <CreateAuction closemodal={showUpload} />}</>
+      <>{connect === false ? '': <ConnectWallet closeConnect={showConnect} />}</>
     </div>
   );
 };

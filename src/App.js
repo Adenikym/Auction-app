@@ -8,6 +8,9 @@ import Landing from './Pages/Landing';
 import Explore from './Pages/Explore';
 // import Footer from './components/Footer';
 
+
+
+
 function App() {
   return (
     <div>

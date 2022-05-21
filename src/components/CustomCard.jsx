@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 // import styled from 'styled-components';
 
 const CustomCard = () => {
@@ -35,9 +36,14 @@ const CustomCard = () => {
         <div className="nft__item_price">
           0.08 ETH<span>1/20</span>
         </div>
+
+        <Link to={'/bid'}>
         <div className="nft__item_action">
           <span>Place a bid</span>
         </div>
+        </Link>
+
+      
         <div className="nft__item_like">
           <i className="fa fa-heart"></i>
           <span>99</span>

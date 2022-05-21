@@ -29,6 +29,8 @@ module.exports = {
     extend: {
       backgroundImage: {
         'hero-pattern': "url('./assets/img/melanie-weidmann.jpg')",
+        'bid-pattern': "url('./assets/img/purple-background.jpg')"
+        
       },
     },
     container: {

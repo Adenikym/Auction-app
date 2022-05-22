@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+/*global AlgoSigner*/
 
+import React, { useState, useEffect,useRef } from 'react';
+import { Link } from 'react-router-dom';
 function NavBar({connect}) {
   const [top, setTop] = useState(true);
+
+  const userAccount=useRef()
 
   // detect whether user has scrolled the page down by 10px
   useEffect(() => {
@@ -12,6 +15,27 @@ function NavBar({connect}) {
     window.addEventListener('scroll', scrollHandler);
     return () => window.removeEventListener('scroll', scrollHandler);
   }, [top]);
+
+
+  const connectAlgoSigner = async () =>{
+    let resp = await AlgoSigner.connect()
+    console.log(resp)
+    getUserAccount()
+  }
+
+  const getUserAccount = async () =>{
+     userAccount.current =  await AlgoSigner.accounts({
+          ledger: 'TestNet'
+        })
+  // console.log(userAccount.current[0]['address'])
+  console.log(userAccount.current)
+  console.log(userAccount)
+  localStorage.setItem('acc', JSON.stringify(userAccount));
+
+
+
+      }
+
 
   return (
     <header
@@ -92,7 +116,7 @@ function NavBar({connect}) {
               </li>
               <li>
                 <button
-                onClick={connect}
+                onClick={connectAlgoSigner}
                   className="btn-sm text-c-black bg-c-blue hover:bg-opacity-70 ml-3 px-5 py-3 flex items-center rounded-lg transition duration-150 ease-in-out"
                 >
                   <span>Connect Wallet</span>

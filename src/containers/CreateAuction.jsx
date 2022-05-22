@@ -4,8 +4,14 @@ import Button from '../components/Formbutton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import DateTimePicker from 'react-datetime-picker';
+import { connectToContract } from '../redux/actions/action';
+import {useDispatch} from 'react-redux'
 function CreateAuction({ closemodal }) {
   const [value, onChange] = useState(new Date());
+   const [title, setTitle]= useState('')
+   const [floor, setFloor]= useState('')
+  const [end, setEnd]= useState('')
+  const dispatch= useDispatch()
   return (
     <div className=" bg-white backdrop-blur-sm shadow-lg absolute top-0 w-full z-30 flex justify-center h-full">
       <div className="bg-c-black  py-9  border-c-blue border-4 shadow-md w-1/3 my-auto px-9 ">
@@ -22,10 +28,10 @@ function CreateAuction({ closemodal }) {
           Create your auction!
         </p>
 
-        <FormInput className="mt-6" placeholder="Enter auction title" />
+        <FormInput value={title}  onChangeHandler={setTitle} className="mt-6" placeholder="Enter auction title" />
 
-        <FormInput className="mt-6" placeholder="What's your floor price?" />
-        <FormInput className="mt-6" placeholder="Auction Item" />
+        <FormInput value={floor}  onChangeHandler={setFloor} className="mt-6" placeholder="What's your floor price?" />
+        <FormInput  className="mt-6" placeholder="Auction Item" />
         <p className="text-c-white mt-5">Start time</p>
         <DateTimePicker
           className="mt-2 bg-c-white h-10 w-full"
@@ -33,7 +39,17 @@ function CreateAuction({ closemodal }) {
           value={value}
         />
 
-        <Button buttonTitle={'Launch Auction'} />
+        <Button handleClick={
+         ()=>{
+          const auction= {
+            name:title,
+            biddingFloor:floor,
+            deadline:end
+          }
+
+dispatch(connectToContract(auction))
+         }
+        } buttonTitle={'Launch Auction'} />
       </div>
     </div>
   );

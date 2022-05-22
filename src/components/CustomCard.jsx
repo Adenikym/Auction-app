@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 // import styled from 'styled-components';
 
 const CustomCard = () => {
@@ -71,9 +72,13 @@ const CustomCard = () => {
         <div className="nft__item_price">
           0.08 ETH<span>1/20</span>
         </div>
-        <div className="nft__item_action">
-          <span>Place a bid</span>
-        </div>
+
+        <Link to={'/bid'}>
+          <div className="nft__item_action">
+            <span>Place a bid</span>
+          </div>
+        </Link>
+
         <div className="nft__item_like">
           <FontAwesomeIcon className="fa fa-heart" icon={faHeart} />
           <span>99</span>

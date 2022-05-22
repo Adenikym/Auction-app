@@ -105,8 +105,7 @@ export const handleImportAccount = mnemonic => {
 
 export const connectToContract = payload => {
   return async () => {
-    const { name, biddingFloor, deadline } = payload;
-    const nftId = '';
+    const { name, biddingFloor, deadline, nftId } = payload;
 
     const details = {
       name,
@@ -124,10 +123,11 @@ export const connectToContract = payload => {
     // const acc2= acc.current[0]['address']
 
     console.log(acc.current[0]['address']);
-    const balance = await reach.balanceOf(acc.current[0]['address']);
+
     const newacc = await reach.connectAccount({
       addr: acc.current[0]['address'],
     });
+    const balance = await reach.balanceOf(newacc);
     console.log(balance);
     console.log(newacc);
     const ctc = newacc.contract(backend);
@@ -136,15 +136,13 @@ export const connectToContract = payload => {
       console.log(`The contract is deployed as = ${JSON.stringify(info)}`);
     });
 
-    //   if(stdlib.balanceOf(acc,nftId) >= 1){
-    //     const interact = {}
+    if (reach.balanceOf(newacc, nftId) >= 1) {
+      const interact = {};
 
-    //     interact.details= details
-
-    //   }
-    // else{
-    // prompt('you do not have the nft')
-    // }
+      interact.details = details;
+    } else {
+      alert('you do not have the nft');
+    }
   };
 };
 

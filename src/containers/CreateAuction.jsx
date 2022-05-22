@@ -11,6 +11,7 @@ function CreateAuction({ closemodal }) {
   const [title, setTitle] = useState('');
   const [floor, setFloor] = useState('');
   //const [end, setEnd] = useState('');
+  const [id, setId] = useState();
   const dispatch = useDispatch();
   return (
     <div className=" bg-white backdrop-blur-sm shadow-lg absolute top-0 w-full z-30 flex justify-center h-full">
@@ -41,7 +42,12 @@ function CreateAuction({ closemodal }) {
           className="mt-6"
           placeholder="What's your floor price?"
         />
-        <FormInput className="mt-6" placeholder="Auction Item" />
+        <FormInput
+          value={id}
+          onChangeHandler={setId}
+          className="mt-6"
+          placeholder="Auction Item id"
+        />
         <p className="text-c-white mt-5">Start time</p>
         <DateTimePicker
           className="mt-2 bg-c-white h-10 w-full"
@@ -54,6 +60,7 @@ function CreateAuction({ closemodal }) {
             const auction = {
               name: title,
               biddingFloor: floor,
+              nftId: id,
               //deadline: end,
             };
 

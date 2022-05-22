@@ -1,5 +1,4 @@
 import React from 'react';
-// import Button from '../components/Formbutton';
 import FormInput from '../components/FormInput';
 
 function BidSummary() {
@@ -9,7 +8,7 @@ function BidSummary() {
       <div className="mt-3">
         <div className="flex justify-between text-c-white">
           <p>You must bid at least </p>
-          <span>15 ETH</span>
+          <span>15 ALGO</span>
         </div>
         <br />
 
@@ -18,15 +17,15 @@ function BidSummary() {
         <div className=" mt-5 text-c-white">
           <div className="flex justify-between ">
             <span className="">Your balance</span>
-            <span>69,000 ETH</span>
+            <span>69,000 ALGO</span>
           </div>
           <div className="flex justify-between">
             <span className="">Service fee</span>
-            <span>69,000 ETH</span>
+            <span>69,000 ALGO</span>
           </div>
           <div className="flex justify-between">
             <span className="">Minimum bid Amount</span>
-            <span>15.02 ETH</span>
+            <span>15.02 ALGO</span>
           </div>
         </div>
 

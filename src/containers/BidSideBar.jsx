@@ -13,7 +13,7 @@ function SideBar() {
           </button>
         </div>
         <p>
-          Minimun bid <span>15 ETH</span>
+          Minimun bid <span>15 ALGO</span>
         </p>
       </div>
       {/* description */}
@@ -37,7 +37,7 @@ function SideBar() {
       <div className="flex">
         <div className="text-c-white flex justify-between mt-4 w-full">
           <p>Minimum Bid</p>
-          <p>15 ETH</p>
+          <p>15 ALGO</p>
         </div>
         <div className="">
           <p>Available until</p>

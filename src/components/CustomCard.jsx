@@ -70,7 +70,7 @@ const CustomCard = () => {
           <h4>Test</h4>
         </span>
         <div className="nft__item_price">
-          0.08 ETH<span>1/20</span>
+          0.08 ALGO<span>1/20</span>
         </div>
 
         <Link to={'/bid'}>

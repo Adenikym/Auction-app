@@ -79,12 +79,12 @@ const NftCard = ({
           </span>
           {nft.status === 'has_offers' ? (
             <div className="has_offers">
-              <span className="through"> {nft.priceover} </span> {nft.price} ETH
+              <span className="through"> {nft.priceover} </span> {nft.price} ALGO
             </div>
           ) : (
             <div className="nft__item_price">
               {nft.price}
-              ETH
+              ALGO
               {nft.status === 'on_auction' && (
                 <span>
                   {nft.bid}/{nft.max_bid}

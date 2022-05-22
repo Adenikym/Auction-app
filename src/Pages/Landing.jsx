@@ -8,13 +8,13 @@ import ConnectWallet from '../containers/ConnectWallet';
 
 const Landing = () => {
   const [upload, setUpload] = useState(false);
-  const [connect, setConnect]= useState(false)
+  const [connect, setConnect] = useState(false);
   const showUpload = () => {
     setUpload(!upload);
   };
-  const showConnect= () =>{
-    setConnect(!connect)
-  }
+  const showConnect = () => {
+    setConnect(!connect);
+  };
   const particlesInit = async main => {
     console.log(main);
 
@@ -109,9 +109,11 @@ const Landing = () => {
           detectRetina: true,
         }}
       />
-      <Hero create={showUpload}  />
+      <Hero create={showUpload} />
       <>{upload === false ? '' : <CreateAuction closemodal={showUpload} />}</>
-      <>{connect === false ? '': <ConnectWallet closeConnect={showConnect} />}</>
+      <>
+        {connect === false ? '' : <ConnectWallet closeConnect={showConnect} />}
+      </>
     </div>
   );
 };

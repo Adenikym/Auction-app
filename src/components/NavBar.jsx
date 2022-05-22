@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-function NavBar({connect}) {
+function NavBar({ connect }) {
   const [top, setTop] = useState(true);
 
   // detect whether user has scrolled the page down by 10px
@@ -92,7 +92,7 @@ function NavBar({connect}) {
               </li>
               <li>
                 <button
-                onClick={connect}
+                  onClick={connect}
                   className="btn-sm text-c-black bg-c-blue hover:bg-opacity-70 ml-3 px-5 py-3 flex items-center rounded-lg transition duration-150 ease-in-out"
                 >
                   <span>Connect Wallet</span>

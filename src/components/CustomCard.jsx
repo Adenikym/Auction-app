@@ -1,20 +1,56 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck, faHeart } from '@fortawesome/free-solid-svg-icons';
 // import styled from 'styled-components';
 
 const CustomCard = () => {
+  const [days, setDays] = useState(0);
+  const [hours, setHours] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(0);
+
+  useEffect(() => {
+    let timer = '2022-06-22T15:00:00.000+00:00';
+    const getTimeUntilDeadline = deadline => {
+      const time = Date.parse(new Date(deadline)) - Date.parse(new Date());
+      if (time < 0) {
+        setDays(0);
+        setHours(0);
+        setMinutes(0);
+        setSeconds(0);
+      } else {
+        const seconds = Math.floor((time / 1000) % 60);
+        const minutes = Math.floor((time / 1000 / 60) % 60);
+        const hours = Math.floor((time / (1000 * 60 * 60)) % 24);
+        const days = Math.floor(time / (1000 * 60 * 60 * 24));
+        setDays(days);
+        setHours(hours);
+        setMinutes(minutes);
+        setSeconds(seconds);
+      }
+    };
+    getTimeUntilDeadline(timer);
+    setInterval(() => getTimeUntilDeadline(timer), 1000);
+  }, []);
+
+  const leading0 = num => (num < 10 ? '0' + num : num);
+
   return (
     <CardWrap className="">
       <div className="de_countdown">
-        <div className="Clock-days">30 d</div>
-        <div className="Clock-hours">4 h</div>
-        <div className="Clock-minutes">20 mm</div>
-        <div className="Clock-seconds">10 s</div>
+        <div className="Clock-days">{`${leading0(days)} d`}</div>
+        <div className="Clock-hours">{`${leading0(hours)} h`}</div>
+        <div className="Clock-minutes">{`${leading0(minutes)} m`}</div>
+        <div className="Clock-seconds">{`${leading0(seconds)} s`}</div>
       </div>
       <div className="author_list_pp">
         <span>
           <img className="lazy" src="https://picsum.photos/200/300" alt="" />
-          <i className="fa fa-check"></i>
+          <FontAwesomeIcon
+            className="author_list_pp_icon fa fa-check"
+            icon={faCheck}
+          />
         </span>
       </div>
       <div className="nft__item_wrap" style={{ height: '269px' }}>
@@ -39,7 +75,7 @@ const CustomCard = () => {
           <span>Place a bid</span>
         </div>
         <div className="nft__item_like">
-          <i className="fa fa-heart"></i>
+          <FontAwesomeIcon className="fa fa-heart" icon={faHeart} />
           <span>99</span>
         </div>
       </div>
@@ -375,7 +411,7 @@ const CardWrap = styled.div`
     height: auto;
     background: #8364e2;
     margin-left: 0;
-    margin-top: -3px;
+    /* margin-top: -3px; */
     border-radius: 100% !important;
     z-index: 1;
     transition: 0.3s;
@@ -401,7 +437,7 @@ const CardWrap = styled.div`
     z-index: 1;
   }
 
-  .author_list_pp i {
+  .author_list_pp_icon {
     color: #fff;
     background: #8364e2;
     font-size: 10px;
@@ -420,7 +456,7 @@ const CardWrap = styled.div`
     display: flex;
     align-items: center;
     margin-top: 20px;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     justify-content: center;
   }
 
@@ -435,5 +471,19 @@ const CardWrap = styled.div`
     border-radius: 8px;
     -moz-border-radius: 8px;
     -webkit-border-radius: 8px;
+  }
+  .fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .fa-check:before {
+    content: '\f00c';
+  }
+  .fa-heart:before {
+    content: '\f004';
   }
 `;

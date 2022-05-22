@@ -114,13 +114,14 @@ export const connectToContract = payload => {
       deadline,
       nftId,
     };
+    console.log(details);
 
     const acc = JSON.parse(localStorage.getItem('acc'));
 
     //save nft details to db
     //get image url
 
-   // const acc2= acc.current[0]['address']
+    // const acc2= acc.current[0]['address']
 
     console.log(acc.current[0]['address']);
     const balance = await reach.balanceOf(acc.current[0]['address']);
@@ -131,7 +132,7 @@ export const connectToContract = payload => {
     console.log(newacc);
     const ctc = newacc.contract(backend);
 
-     ctc.getInfo().then(info => {
+    ctc.getInfo().then(info => {
       console.log(`The contract is deployed as = ${JSON.stringify(info)}`);
     });
 

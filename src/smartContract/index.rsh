@@ -7,9 +7,7 @@ const ProjectDetails = Object({
 })
 export const main = Reach.App(() => {
   const Creator = Participant('Creator', {
-    details: ProjectDetails,
-    declareWinner: Fun([Address, UInt], Null),
-    topBid: Fun([Address, UInt], Null),
+    details: ProjectDetails
     // withdrawFunds: Fun([Address], Null) Send to to wallet
     })
     
@@ -54,7 +52,6 @@ export const main = Reach.App(() => {
           if (!isFirstBid){
             transfer(highestBid).to(highestBidder)
           }
-          Creator.interact.topBid(this, amount)
           setResponse([this, amount])
           return [true, amount, this, false]
 
@@ -69,7 +66,6 @@ export const main = Reach.App(() => {
        });
        transfer(amt, nftId).to(highestBidder);
        if(!isFirstBid){ transfer(highestBid).to(Creator); }
-       Creator.interact.declareWinner(highestBidder, highestBid);
   commit();
   exit();
 });

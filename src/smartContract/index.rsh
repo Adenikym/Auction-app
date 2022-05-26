@@ -14,7 +14,7 @@ export const main = Reach.App(() => {
     })
     
   const Bidder = API('Bidder', {
-    bid: Fun([UInt], Bool)
+    bid: Fun([UInt], Tuple(Address, UInt))
   });
 
   
@@ -55,7 +55,7 @@ export const main = Reach.App(() => {
             transfer(highestBid).to(highestBidder)
           }
           Creator.interact.topBid(this, amount)
-          setResponse(true)
+          setResponse([this, amount])
           return [true, amount, this, false]
 
      

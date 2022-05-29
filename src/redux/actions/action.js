@@ -8,6 +8,7 @@ import {
   SET_USER_BALANCE,
 } from '../Types/types';
 import { loadStdlib } from '@reach-sh/stdlib';
+import axios from 'axios';
 // const stdlib = loadStdlib()
 const reach = loadStdlib('ALGO');
 reach.setProviderByName('TestNet');
@@ -127,27 +128,78 @@ export const connectToContract = payload => {
     const newacc = await reach.connectAccount({
       addr: acc.current[0]['address'],
     });
-    const balance = await reach.balanceOf(newacc);
+    const fmt = x => reach.formatCurrency(x, 4);
+    const balance = fmt(await reach.balanceOf(newacc));
     console.log(balance);
     console.log(newacc);
-    const ctc = newacc.contract(backend);
 
-    ctc.getInfo().then(info => {
-      console.log(`The contract is deployed as = ${JSON.stringify(info)}`);
-    });
+    const available = await reach.balanceOf(newacc, 91354576);
+    const nftBalance = reach.formatWithDecimals(available, 0);
+    console.log(nftBalance);
+    console.log(available);
+    if (available >= 1) {
+      //deploy contract if user wallet contains nft
+      const ctc = newacc.contract(backend);
 
-    if (reach.balanceOf(newacc, nftId) >= 1) {
+      axios.post('https://auction-list.herokuapp.com/auction/', {
+        name,
+        top_bid: biddingFloor,
+        top_bidder: null,
+        auction_info: 'info',
+        floor_price: biddingFloor,
+      });
+
+      const runContract = await ctc.getInfo();
+      console.log('info', runContract);
+
+      // await ctc.getInfo().then(info => {
+      //       console.log(`The contract is deployed as = ${JSON.stringify(info)}`);
+      //       axios.post('https://auction-list.herokuapp.com/auction/',{
+      //         name,
+      //         "top_bid": biddingFloor,
+      //         "top_bidder": null,
+      //         "auction_info": info,
+      //         "floor_price": biddingFloor
+      //       })
+      //     });
+
       const interact = {};
 
       interact.details = details;
     } else {
-      alert('you do not have the nft');
+      alert('you do not have the nft you want to bid');
     }
   };
 };
 
 export const makeBid = payload => {
-  //get bidders account
-  // ctc = acc.contract(backend, info);
-  // ctc.apis.Bidder.bid()
+  return async () => {
+    const { bid } = payload;
+
+    const acc = JSON.parse(localStorage.getItem('acc'));
+
+    //get bidders account
+
+    const newacc = await reach.connectAccount({
+      addr: acc.current[0]['address'],
+    });
+
+    const fmt = x => reach.formatCurrency(x, 4);
+
+    const balance = fmt(await reach.balanceOf(newacc));
+
+    if (balance >= bid) {
+      const ctc = newacc.contract(backend);
+
+      ctc.apis.Bidder.bid(bid);
+    } else {
+      alert('You do not have sufficient funds to bid for this Nft.');
+    }
+  };
+};
+
+export const getAuctions = () => {
+  axios.get('https://auction-list.herokuapp.com/auction/').then(auctions => {
+    console.log(auctions);
+  });
 };

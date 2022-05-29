@@ -1,9 +1,15 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import NavBar from '../components/NavBar';
 import styled from 'styled-components';
 import CustomCard from '../components/CustomCard';
+import { useDispatch } from 'react-redux';
+import { getAuctions } from '../redux/actions/action';
 
 const Explore = () => {
+  const dispatch= useDispatch()
+  useEffect(() => {
+    dispatch(getAuctions)
+  }, []);
   return (
     <div className="bg-c-black h-fit">
       <NavBar />

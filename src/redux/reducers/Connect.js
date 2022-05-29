@@ -7,6 +7,7 @@ import {
   SET_LENDER_CONTRACT,
   SET_USER_BALANCE,
   STORE_USER,
+  LAUNCH_AUCTION,
 } from '../Types/types';
 
 const initNetState = {
@@ -18,6 +19,8 @@ const initNetState = {
   user: null,
   userBalance: null,
   ctcLender: null,
+  loading: false,
+  auction: {},
 };
 
 export const connectReducer = (state = initNetState, action) => {
@@ -38,6 +41,9 @@ export const connectReducer = (state = initNetState, action) => {
       return { ...state, ctcLender: action.payload };
     case STORE_USER:
       return { ...state, user: action.payload };
+    case LAUNCH_AUCTION:
+      return { ...state, auction: action.payload, loading: true };
+
     default:
       return state;
   }

@@ -2,10 +2,15 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function NavBar({ connect }) {
   const [top, setTop] = useState(true);
 
   const userAccount = useRef();
+
+  const notify = () => toast('Please install Algosigner to connect');
+  const connected = () => toast('wallet connected!');
 
   // detect whether user has scrolled the page down by 10px
   useEffect(() => {
@@ -17,9 +22,13 @@ function NavBar({ connect }) {
   }, [top]);
 
   const connectAlgoSigner = async () => {
-    let resp = await AlgoSigner.connect();
-    console.log(resp);
-    getUserAccount();
+    if (typeof AlgoSigner !== 'undefined') {
+      let resp = await AlgoSigner.connect();
+      console.log(resp);
+      getUserAccount();
+    } else {
+      notify();
+    }
   };
 
   const getUserAccount = async () => {
@@ -27,9 +36,11 @@ function NavBar({ connect }) {
       ledger: 'TestNet',
     });
     // console.log(userAccount.current[0]['address'])
+
     console.log(userAccount.current);
     console.log(userAccount);
     localStorage.setItem('acc', JSON.stringify(userAccount));
+    connected();
   };
 
   return (
@@ -149,6 +160,7 @@ function NavBar({ connect }) {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </header>
   );
 }

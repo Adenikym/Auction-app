@@ -6,6 +6,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import DateTimePicker from 'react-datetime-picker';
 import { connectToContract } from '../redux/actions/action';
 import { useDispatch } from 'react-redux';
+
 function CreateAuction({ closemodal }) {
   const [value, onChange] = useState(new Date());
   const [title, setTitle] = useState('');
@@ -48,13 +49,13 @@ function CreateAuction({ closemodal }) {
           className="mt-6"
           placeholder="Auction Item id"
         />
-        <p className="text-c-white mt-5">Start time</p>
+        {/* <p className="text-c-white mt-5">Start time</p>
         <DateTimePicker
           className="mt-2 bg-c-white h-10 w-full"
           onChange={onChange}
           value={value}
         />
-
+         */}
         <Button
           handleClick={() => {
             const auction = {

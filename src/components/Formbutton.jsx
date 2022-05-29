@@ -1,13 +1,16 @@
 import React from 'react';
 
-function Button({ buttonTitle, handleClick }) {
+import { Dots } from 'react-activity';
+import 'react-activity/dist/library.css';
+
+function Button({ buttonTitle, handleClick, buttonLoading }) {
   return (
     <button
       style={{ background: '#735BDC', color: '#fff' }}
       className=" ... bg-white px-10 py-2 mx-auto mt-5 rounded-full text-white text-xl"
       onClick={handleClick}
     >
-      {buttonTitle}
+      <>{buttonLoading ? <Dots color="white" /> : buttonTitle}</>
     </button>
   );
 }

@@ -33,7 +33,7 @@ export const main = Reach.App(() => {
 // Users to claim
   // let highestBid = 0
   // let highestBidder = Null
-  const amt = 1;
+  const amt = 1;  
   Creator.pay([[amt, nftId]]);
   check(balance(nftId) == amt, "balance of NFT is wrong");
 

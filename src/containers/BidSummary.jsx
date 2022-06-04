@@ -1,10 +1,11 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import FormInput from '../components/FormInput';
-import {useDispatch} from 'react-redux'
+import { makeBid } from '../redux/actions/action';
+import { useDispatch } from 'react-redux';
 
 function BidSummary() {
-  const [bid , setBid]= useState('')
-  const dispatch= useDispatch()
+  const [bid, setBid] = useState('');
+  const dispatch = useDispatch();
   return (
     <div className="bg-c-input rounded-md w-96 px-5 py-6">
       <p className="text-center text-c-white text-3xl font-bold">Place a Bid</p>
@@ -33,8 +34,11 @@ function BidSummary() {
         </div>
 
         <div className="flex items-center">
-          <FormInput />
-          <button className="bg-c-blue h-11 px-2 rounded-sm mt-5 text-c-white">
+          <FormInput onChangeHandler={setBid} value={bid} />
+          <button
+            handleClick={dispatch(makeBid)}
+            className="bg-c-blue h-11 px-2 rounded-sm mt-5 text-c-white"
+          >
             Place bid
           </button>
         </div>

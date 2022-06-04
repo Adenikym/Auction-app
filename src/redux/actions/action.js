@@ -149,7 +149,7 @@ export const connectToContract = payload => {
         floor_price: biddingFloor,
       });
 
-      const runContract = await ctc.getInfo();
+      const runContract = await ctc.getInfo;
       console.log('info', runContract);
 
       // await ctc.getInfo().then(info => {

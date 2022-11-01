@@ -3,12 +3,12 @@ import FormInput from '../components/FormInput';
 import Button from '../components/Formbutton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import DateTimePicker from 'react-datetime-picker';
+//import DateTimePicker from 'react-datetime-picker';
 import { connectToContract } from '../redux/actions/action';
 import { useDispatch } from 'react-redux';
 
 function CreateAuction({ closemodal }) {
-  const [value, onChange] = useState(new Date());
+  // const [value, onChange] = useState(new Date());
   const [title, setTitle] = useState('');
   const [floor, setFloor] = useState('');
   //const [end, setEnd] = useState('');
